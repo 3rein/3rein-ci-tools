@@ -1,9 +1,9 @@
-FROM debian:stable-slim
+FROM google/cloud-sdk:slim
 
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update \
- && apt-get install -y curl git jq make openssh-client unzip xz-utils
+ && apt-get install -y jq unzip
 
 # fly
 RUN VERSION="$(curl --silent "https://api.github.com/repos/concourse/concourse/releases" | jq -r ".[].tag_name" | sort -h | tail -1)" \
